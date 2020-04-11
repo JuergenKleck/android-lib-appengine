@@ -1,0 +1,22 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <string name="lib_name">SimplyApps.info AppEngine</string>
+  	
+  	<string name="btn_quit">Quit</string>
+  	<string name="btn_ok">OK</string>
+  	<string name="btn_retry">Retry</string>
+    <string name="btn_update">Update now</string>
+  	<string name="btn_later">Remind later</string>
+  	
+    <string name="update_title">Update available</string>
+    <string name="update_text">Please update to the new version.</string>
+    <string name="check_title">Update check required</string>
+    <string name="check_text">Could not check for required updates. Please check your internet connectivity.</string>
+    <string name="error_purchase_busy" tools:ignore="MissingTranslation">Purchase already in progress. Please try again shortly.</string>
+    <string name="error_purchase_unavail" tools:ignore="MissingTranslation">The purchase system is not ready yet. Please try again shortly.</string>
+    <string name="update_complete">Update complete</string>
+    
+    <string name="save_failed" tools:ignore="MissingTranslation">Failed to save the item.</string>    
+	<string name="delete_failed" tools:ignore="MissingTranslation">Failed to delete the item.</string>    
+    
+</resources>
