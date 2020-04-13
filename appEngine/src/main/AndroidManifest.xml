@@ -3,7 +3,4 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <!-- Required permission to use in-app billing. -->
-    <uses-permission android:name="com.android.vending.BILLING" />
-
 </manifest>

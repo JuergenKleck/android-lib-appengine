@@ -6,10 +6,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
+
 import info.simplyapps.appengine.storage.dto.BasicTable;
 import info.simplyapps.appengine.storage.dto.Configuration;
 import info.simplyapps.appengine.storage.dto.Extensions;
-import info.simplyapps.appengine.storage.dto.Purchases;
 
 public abstract class DBDriver extends SQLiteOpenHelper {
 
@@ -29,18 +29,11 @@ public abstract class DBDriver extends SQLiteOpenHelper {
                     StorageContract.TableConfiguration.COLUMN_NAME + TYPE_TEXT + COMMA_SEP +
                     StorageContract.TableConfiguration.COLUMN_VALUE + TYPE_TEXT +
                     " );";
-    protected static final String SQL_CREATE_PURCHASES =
-            "CREATE TABLE " + StorageContract.TablePurchases.TABLE_NAME + " (" +
-                    StorageContract.TablePurchases._ID + " INTEGER PRIMARY KEY," +
-                    StorageContract.TablePurchases.COLUMN_NAME + TYPE_TEXT +
-                    " );";
 
     protected static final String SQL_DELETE_EXTENSIONS =
             "DROP TABLE IF EXISTS " + StorageContract.TableExtensions.TABLE_NAME;
     protected static final String SQL_DELETE_CONFIGURATION =
             "DROP TABLE IF EXISTS " + StorageContract.TableConfiguration.TABLE_NAME;
-    protected static final String SQL_DELETE_PURCHASES =
-            "DROP TABLE IF EXISTS " + StorageContract.TablePurchases.TABLE_NAME;
 
     private static DBDriver self;
 
@@ -82,7 +75,6 @@ public abstract class DBDriver extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_EXTENSIONS);
         db.execSQL(SQL_CREATE_CONFIGURATION);
-        db.execSQL(SQL_CREATE_PURCHASES);
         createTables(db);
     }
 
@@ -103,18 +95,6 @@ public abstract class DBDriver extends SQLiteOpenHelper {
         return persist(data, values, StorageContract.TableConfiguration.TABLE_NAME);
     }
 
-    public boolean store(Purchases data) {
-        ContentValues values = new ContentValues();
-        values.put(StorageContract.TablePurchases.COLUMN_NAME, data.name);
-        return persist(data, values, StorageContract.TablePurchases.TABLE_NAME);
-    }
-
-    public boolean migrate(SQLiteDatabase db, Purchases data) {
-        ContentValues values = new ContentValues();
-        values.put(StorageContract.TablePurchases.COLUMN_NAME, data.name);
-        return persist(db, data, values, StorageContract.TablePurchases.TABLE_NAME, true);
-    }
-
     public boolean store(Extensions data) {
         ContentValues values = new ContentValues();
         values.put(StorageContract.TableExtensions.COLUMN_NAME, data.name);
@@ -128,8 +108,7 @@ public abstract class DBDriver extends SQLiteOpenHelper {
             db = getDBInstance();
             String table = Configuration.class.isInstance(data) ? StorageContract.TableConfiguration.TABLE_NAME :
                     Extensions.class.isInstance(data) ? StorageContract.TableExtensions.TABLE_NAME :
-                            Purchases.class.isInstance(data) ? StorageContract.TablePurchases.TABLE_NAME :
-                                    getExtendedTable(data);
+                            getExtendedTable(data);
             String[] whereArgs = new String[]{"0"};
             return db.delete(table, BaseColumns._ID + ">= ?", whereArgs) > 0;
         } finally {
@@ -145,8 +124,7 @@ public abstract class DBDriver extends SQLiteOpenHelper {
             db = getDBInstance();
             String table = Configuration.class.isInstance(data) ? StorageContract.TableConfiguration.TABLE_NAME :
                     Extensions.class.isInstance(data) ? StorageContract.TableExtensions.TABLE_NAME :
-                            Purchases.class.isInstance(data) ? StorageContract.TablePurchases.TABLE_NAME :
-                                    getExtendedTable(data);
+                            getExtendedTable(data);
             String[] whereArgs = new String[]{Long.toString(data.id)};
             return db.delete(table, BaseColumns._ID + "=?", whereArgs) > 0;
         } finally {
@@ -211,10 +189,6 @@ public abstract class DBDriver extends SQLiteOpenHelper {
         for (Configuration c : data.configuration) {
             store(c);
         }
-        // create purchases
-        for (Purchases c : data.purchases) {
-            store(c);
-        }
         for (Extensions c : data.extensions) {
             store(c);
         }
@@ -228,7 +202,6 @@ public abstract class DBDriver extends SQLiteOpenHelper {
             db = getDBInstance();
 
             readConfiguration(data, db);
-            readPurchases(data, db);
             readExtensions(data, db);
             readExtended(data, db);
 
@@ -270,38 +243,6 @@ public abstract class DBDriver extends SQLiteOpenHelper {
             }
         }
     }
-
-
-    private void readPurchases(StoreData data, SQLiteDatabase db) {
-        // Define a projection that specifies which columns from the database
-        // you will actually use after this query.
-        String[] projection = {
-                StorageContract.TablePurchases._ID,
-                StorageContract.TablePurchases.COLUMN_NAME
-        };
-
-        // How you want the results sorted in the resulting Cursor
-        String sortOrder = StorageContract.TablePurchases.COLUMN_NAME + " ASC";
-
-        Cursor c = null;
-        try {
-            c = openCursor(db, projection, sortOrder, StorageContract.TablePurchases.TABLE_NAME);
-
-            boolean hasResults = c.moveToFirst();
-            while (hasResults) {
-                Purchases i = new Purchases();
-                i.id = c.getLong(c.getColumnIndexOrThrow(StorageContract.TablePurchases._ID));
-                i.name = c.getString(c.getColumnIndexOrThrow(StorageContract.TablePurchases.COLUMN_NAME));
-                data.purchases.add(i);
-                hasResults = c.moveToNext();
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-        }
-    }
-
 
     private void readExtensions(StoreData data, SQLiteDatabase db) {
         // Define a projection that specifies which columns from the database
