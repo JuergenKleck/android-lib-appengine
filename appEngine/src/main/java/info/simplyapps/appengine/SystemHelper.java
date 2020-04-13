@@ -3,7 +3,6 @@ package info.simplyapps.appengine;
 import info.simplyapps.appengine.storage.StoreData;
 import info.simplyapps.appengine.storage.dto.Configuration;
 import info.simplyapps.appengine.storage.dto.Extensions;
-import info.simplyapps.appengine.storage.dto.Purchases;
 
 /**
  * @author simplyapps.info
@@ -12,29 +11,6 @@ public abstract class SystemHelper {
 
     public static boolean notEmpty(String s) {
         return s != null && s.length() > 0;
-    }
-
-    public synchronized static final boolean hasPurchase(String name) {
-        if (StoreData.getInstance() != null && StoreData.getInstance().purchases != null) {
-            for (Purchases p : StoreData.getInstance().purchases) {
-                if (p.name.equals(name)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public synchronized static final void addPurchase(Purchases purchase) {
-        if (StoreData.getInstance() != null && StoreData.getInstance().purchases != null) {
-            StoreData.getInstance().purchases.add(purchase);
-        }
-    }
-
-    public synchronized static final void removePurchase(Purchases purchase) {
-        if (StoreData.getInstance() != null && StoreData.getInstance().purchases != null) {
-            StoreData.getInstance().purchases.remove(purchase);
-        }
     }
 
     public synchronized static final boolean hasConfiguration(String name) {

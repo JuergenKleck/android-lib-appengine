@@ -2,7 +2,6 @@ package info.simplyapps.appengine.storage;
 
 import info.simplyapps.appengine.storage.dto.Configuration;
 import info.simplyapps.appengine.storage.dto.Extensions;
-import info.simplyapps.appengine.storage.dto.Purchases;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,12 +12,10 @@ public abstract class StoreData implements Serializable {
     private static final long serialVersionUID = 5696810296031292822L;
 
     public int migration;
-    public List<Purchases> purchases;
     public List<Configuration> configuration;
     public List<Extensions> extensions;
 
     public StoreData() {
-        purchases = new ArrayList<Purchases>();
         configuration = new ArrayList<Configuration>();
         extensions = new ArrayList<Extensions>();
     }
