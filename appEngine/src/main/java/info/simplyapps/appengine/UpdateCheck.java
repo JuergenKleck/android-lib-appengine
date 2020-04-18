@@ -6,14 +6,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import info.simplyapps.appengine.storage.DBDriver;
 import info.simplyapps.appengine.storage.StoreData;
 import info.simplyapps.appengine.storage.dto.Configuration;
-import org.json.JSONObject;
-
-import java.io.*;
-import java.net.HttpURLConnection;
-import java.net.URL;
 
 //Uses AsyncTask to create a task away from the main UI thread. This task takes a 
 // URL string and uses it to create an HttpUrlConnection. Once the connection
