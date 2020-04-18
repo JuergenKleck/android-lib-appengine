@@ -3,8 +3,13 @@ package info.simplyapps.appengine.screens;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.*;
+import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -17,7 +22,6 @@ import android.widget.RelativeLayout;
  * <p>
  * ColorPickDialog cpd = new ColorPickDialog( MainActivity.this, 0xFF4488CC, new OnColorSelectedListener() {
  *
- * @author juergen
  * @Override public void colorSelected(Integer color) {
  * // Do something with the selected color
  * }
@@ -301,9 +305,6 @@ public class ColorPickDialog extends AlertDialog {
             int maxHeight = MeasureSpec.getSize(heightMeasureSpec);
 
             int width, height;
-            /*
-             * Make the view quadratic, with height and width equal and as large as possible
-             */
             width = height = Math.min(maxWidth, maxHeight);
 
             setMeasuredDimension(width, height);

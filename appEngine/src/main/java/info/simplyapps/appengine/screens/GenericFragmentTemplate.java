@@ -4,18 +4,36 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-public abstract class GenericFragmentTemplate extends Fragment {
+import info.simplyapps.appengine.PermissionHelper;
 
-    protected abstract int getScreenLayout();
+public abstract class GenericFragmentTemplate extends Fragment implements IGenericUI {
 
-    protected abstract boolean isFullScreen();
+    private int screenWidth;
+    private int screenHeight;
+
+    protected PermissionHelper permissionHelper = new PermissionHelper();
+
+    public abstract int getScreenLayout();
+
+    public abstract boolean isFullScreen();
 
     public abstract void prepareStorage(Context context);
 
-    public int screenWidth;
-    public int screenHeight;
+    public abstract void onPermissionResult(String permission, boolean granted);
+
+    @Override
+    public int getScreenWidth() {
+        return screenWidth;
+    }
+
+    @Override
+    public int getScreenHeight() {
+        return screenHeight;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,4 +53,15 @@ public abstract class GenericFragmentTemplate extends Fragment {
         getActivity().setContentView(getScreenLayout());
 
     }
+
+    public boolean checkPermission(String permission, Boolean alwaysAsk) {
+        return permissionHelper.checkPermission(getContext(), getActivity(), permission, alwaysAsk);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        permissionHelper.onRequestPermissionsResult(this, requestCode, permissions, grantResults);
+    }
+
 }

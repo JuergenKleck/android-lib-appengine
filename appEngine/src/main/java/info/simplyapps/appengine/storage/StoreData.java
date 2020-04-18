@@ -1,11 +1,11 @@
 package info.simplyapps.appengine.storage;
 
-import info.simplyapps.appengine.storage.dto.Configuration;
-import info.simplyapps.appengine.storage.dto.Extensions;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import info.simplyapps.appengine.storage.dto.Configuration;
+import info.simplyapps.appengine.storage.dto.Extensions;
 
 public abstract class StoreData implements Serializable {
 
@@ -16,8 +16,8 @@ public abstract class StoreData implements Serializable {
     public List<Extensions> extensions;
 
     public StoreData() {
-        configuration = new ArrayList<Configuration>();
-        extensions = new ArrayList<Extensions>();
+        configuration = new ArrayList<>();
+        extensions = new ArrayList<>();
     }
 
     private static StoreData self;
