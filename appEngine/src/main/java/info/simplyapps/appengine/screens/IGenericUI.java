@@ -6,8 +6,6 @@ public interface IGenericUI {
 
     void prepareStorage(Context context);
 
-    void onPermissionResult(String permission, boolean granted);
-
     int getScreenLayout();
 
     boolean isFullScreen();
