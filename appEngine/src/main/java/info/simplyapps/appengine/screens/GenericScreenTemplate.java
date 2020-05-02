@@ -11,7 +11,7 @@ import androidx.core.app.ActivityCompat;
 
 import info.simplyapps.appengine.PermissionHelper;
 
-public abstract class GenericScreenTemplate extends AppCompatActivity implements IGenericUI, ActivityCompat.OnRequestPermissionsResultCallback {
+public abstract class GenericScreenTemplate extends AppCompatActivity implements IGenericUI, IPermissionHandler, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private int screenWidth;
     private int screenHeight;
@@ -25,6 +25,8 @@ public abstract class GenericScreenTemplate extends AppCompatActivity implements
     public abstract void prepareStorage(Context context);
 
     public abstract void onPermissionResult(String permission, boolean granted);
+
+    public abstract void onScreenCreate(Bundle savedInstanceState);
 
     @Override
     public int getScreenWidth() {
@@ -52,6 +54,8 @@ public abstract class GenericScreenTemplate extends AppCompatActivity implements
         }
 
         setContentView(getScreenLayout());
+
+        onScreenCreate(savedInstanceState);
     }
 
     public boolean checkPermission(String permission, Boolean alwaysAsk) {

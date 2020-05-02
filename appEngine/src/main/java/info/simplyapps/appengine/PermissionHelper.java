@@ -15,7 +15,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
-import info.simplyapps.appengine.screens.IGenericUI;
+import info.simplyapps.appengine.screens.IPermissionHandler;
 
 /**
  * Helper class which checks permissions and request permissions from the user if not granted
@@ -63,7 +63,7 @@ public class PermissionHelper {
         return hasPermission;
     }
 
-    public void onRequestPermissionsResult(IGenericUI genericScreen, int requestCode,
+    public void onRequestPermissionsResult(IPermissionHandler permissionObj, int requestCode,
                                            String[] permissions, int[] grantResults) {
         if (permissionMapper.containsValue(requestCode)) {
             // If request is cancelled, the result arrays are empty.
@@ -71,9 +71,9 @@ public class PermissionHelper {
                     stringIntegerEntry.getValue().equals(requestCode)).findAny();
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                genericScreen.onPermissionResult(permission.isPresent() ? permission.get().getKey() : "", true);
+                permissionObj.onPermissionResult(permission.isPresent() ? permission.get().getKey() : "", true);
             } else {
-                genericScreen.onPermissionResult(permission.isPresent() ? permission.get().getKey() : "", false);
+                permissionObj.onPermissionResult(permission.isPresent() ? permission.get().getKey() : "", false);
             }
             return;
         }
