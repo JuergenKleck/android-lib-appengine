@@ -1,4 +1,4 @@
-package info.simplyapps.appengine.screens;
+package com.juergenkleck.android.appengine.screens;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -11,8 +11,13 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import info.simplyapps.appengine.PermissionHelper;
+import com.juergenkleck.android.appengine.PermissionHelper;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public abstract class GenericFragmentTemplate extends Fragment implements IGenericUI, IPermissionHandler {
 
     protected View root;

@@ -1,12 +1,17 @@
-package info.simplyapps.appengine.storage;
+package com.juergenkleck.android.appengine.storage;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import info.simplyapps.appengine.storage.dto.Configuration;
-import info.simplyapps.appengine.storage.dto.Extensions;
+import com.juergenkleck.android.appengine.storage.dto.Configuration;
+import com.juergenkleck.android.appengine.storage.dto.Extensions;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public abstract class StoreData implements Serializable {
 
     private static final long serialVersionUID = 5696810296031292822L;

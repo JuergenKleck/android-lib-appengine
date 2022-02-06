@@ -1,4 +1,4 @@
-package info.simplyapps.appengine;
+package com.juergenkleck.android.appengine;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -17,15 +17,15 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import info.simplyapps.appengine.storage.DBDriver;
-import info.simplyapps.appengine.storage.StoreData;
-import info.simplyapps.appengine.storage.dto.Configuration;
+import com.juergenkleck.android.appengine.storage.DBDriver;
+import com.juergenkleck.android.appengine.storage.StoreData;
+import com.juergenkleck.android.appengine.storage.dto.Configuration;
 
-//Uses AsyncTask to create a task away from the main UI thread. This task takes a 
-// URL string and uses it to create an HttpUrlConnection. Once the connection
-// has been established, the AsyncTask downloads the contents of the webpage as
-// an InputStream. Finally, the InputStream is converted into a string, which is
-// displayed in the UI by the AsyncTask's onPostExecute method.
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public final class UpdateCheck extends AsyncTask<String, String, String> {
 
     public UpdateCheck() {

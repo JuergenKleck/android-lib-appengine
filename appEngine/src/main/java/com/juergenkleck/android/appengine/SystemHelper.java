@@ -1,11 +1,13 @@
-package info.simplyapps.appengine;
+package com.juergenkleck.android.appengine;
 
-import info.simplyapps.appengine.storage.StoreData;
-import info.simplyapps.appengine.storage.dto.Configuration;
-import info.simplyapps.appengine.storage.dto.Extensions;
+import com.juergenkleck.android.appengine.storage.StoreData;
+import com.juergenkleck.android.appengine.storage.dto.Configuration;
+import com.juergenkleck.android.appengine.storage.dto.Extensions;
 
 /**
- * @author simplyapps.info
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
  */
 public abstract class SystemHelper {
 

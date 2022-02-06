@@ -1,4 +1,4 @@
-package info.simplyapps.appengine.screens;
+package com.juergenkleck.android.appengine.screens;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,8 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import info.simplyapps.appengine.PermissionHelper;
+import com.juergenkleck.android.appengine.PermissionHelper;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public abstract class GenericScreenTemplate extends AppCompatActivity implements IGenericUI, IPermissionHandler, ActivityCompat.OnRequestPermissionsResultCallback {
 
     private int screenWidth;

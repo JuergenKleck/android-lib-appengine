@@ -1,7 +1,12 @@
-package info.simplyapps.appengine.storage;
+package com.juergenkleck.android.appengine.storage;
 
 import android.provider.BaseColumns;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public abstract class StorageContract {
 
     public static abstract class TableConfiguration implements BaseColumns {

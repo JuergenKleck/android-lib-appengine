@@ -1,12 +1,12 @@
-package info.simplyapps.appengine.storage;
+package com.juergenkleck.android.appengine.storage;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Migrate from version X to version Y
+ * Android library - AppEngine
  *
- * @author juergen
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
  */
 public class MigrationHelper {
 

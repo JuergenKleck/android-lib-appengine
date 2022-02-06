@@ -1,7 +1,12 @@
-package info.simplyapps.appengine.storage.dto;
+package com.juergenkleck.android.appengine.storage.dto;
 
 import java.io.Serializable;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public final class Configuration extends BasicTable implements Serializable {
 
     /**
