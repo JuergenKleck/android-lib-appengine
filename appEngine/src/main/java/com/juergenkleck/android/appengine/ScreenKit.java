@@ -1,5 +1,10 @@
-package info.simplyapps.appengine;
+package com.juergenkleck.android.appengine;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public class ScreenKit {
 
     // assume this is the 100% value

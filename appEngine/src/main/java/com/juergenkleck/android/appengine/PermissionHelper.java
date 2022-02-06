@@ -1,4 +1,4 @@
-package info.simplyapps.appengine;
+package com.juergenkleck.android.appengine;
 
 import android.app.Activity;
 import android.content.Context;
@@ -15,10 +15,15 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
 
-import info.simplyapps.appengine.screens.IPermissionHandler;
+import com.juergenkleck.android.appengine.screens.IPermissionHandler;
 
 /**
  * Helper class which checks permissions and request permissions from the user if not granted
+ *
+ *
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
  */
 public class PermissionHelper {
 

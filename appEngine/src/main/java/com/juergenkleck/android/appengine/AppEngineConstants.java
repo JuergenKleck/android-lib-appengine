@@ -1,6 +1,11 @@
-package info.simplyapps.appengine;
+package com.juergenkleck.android.appengine;
 
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public final class AppEngineConstants {
 
     public static final String GOOGLE_PLAY_URL = "https://play.google.com/store/apps/details?id=";

@@ -1,11 +1,11 @@
-package info.simplyapps.appengine.storage;
+package com.juergenkleck.android.appengine.storage;
 
-import info.simplyapps.appengine.storage.dto.BasicTable;
+import com.juergenkleck.android.appengine.storage.dto.BasicTable;
 
 /**
- * Migration container
+ * Android library - AppEngine
  *
- * @author juergen
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
  */
 public class Migrate {
 

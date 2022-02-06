@@ -1,4 +1,4 @@
-package info.simplyapps.appengine.storage;
+package com.juergenkleck.android.appengine.storage;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,10 +7,15 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import info.simplyapps.appengine.storage.dto.BasicTable;
-import info.simplyapps.appengine.storage.dto.Configuration;
-import info.simplyapps.appengine.storage.dto.Extensions;
+import com.juergenkleck.android.appengine.storage.dto.BasicTable;
+import com.juergenkleck.android.appengine.storage.dto.Configuration;
+import com.juergenkleck.android.appengine.storage.dto.Extensions;
 
+/**
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
+ */
 public abstract class DBDriver extends SQLiteOpenHelper {
 
     protected static final String TYPE_TEXT = " TEXT";

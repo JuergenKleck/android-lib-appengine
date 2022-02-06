@@ -1,4 +1,4 @@
-package info.simplyapps.appengine.screens;
+package com.juergenkleck.android.appengine.screens;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -29,6 +29,10 @@ import android.widget.RelativeLayout;
  * cpd.setTitle( "Pick a color" );
  * // cpd.setNoColorButton( R.string.no_color );
  * cpd.show();
+ *
+ * Android library - AppEngine
+ *
+ * Copyright 2022 by Juergen Kleck <develop@juergenkleck.com>
  */
 public class ColorPickDialog extends AlertDialog {
 

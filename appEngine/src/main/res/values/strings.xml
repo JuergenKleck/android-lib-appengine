@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="lib_name">SimplyApps.info AppEngine</string>
+    <string name="lib_name">AppEngine</string>
   	
   	<string name="btn_quit">Quit</string>
   	<string name="btn_ok">OK</string>
